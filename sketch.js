@@ -6,6 +6,7 @@ let mosaicWidth, mosaicHeight;
 let posX = 60;
 let posY = 60;
 let col;
+let pg;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
@@ -13,6 +14,7 @@ function setup() {
 	captureH = numMosBlocks * .75;
 	captureW = numMosBlocks;
 	capture.size(captureW, captureH);
+	pg = createGraphics(captureW, captureH);
 	//capture.hide();
 	console.log(captureW);
 
@@ -28,14 +30,15 @@ function drawMosaic(posX, posY, mosaicWidth, mosaicHeight, mosaicRes) {
 		let c = capture.get(0, 0, captureH, captureH);
 
 		image(c, posX, posY, mosaicWidth, mosaicHeight);
-
-		for (let x = posX; x < mosaicWidth+posX; x += 12) {
-			for (let y = posY; y <  mosaicHeight+posY; y += 12) {
+		let inc = Math.round(mosaicWidth / numMosBlocks);
+		console.log(inc);
+		for (let x = posX; x < mosaicWidth + posX; x += inc) {
+			for (let y = posY; y < mosaicHeight + posY; y += inc) {
 				col = get(x, y);
 				//console.log(col);
 				fill(col);
 				noStroke();
-				rect(x, y, 10, 10);
+				rect(x, y, inc, inc);
 			}
 
 		}
