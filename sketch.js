@@ -7,7 +7,7 @@ var vScale; //calculates scale from target video to display width
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
-	vMosaicX = 72; //change this to change the length of a row of number of squares displayed in the mosaic
+	vMosaicX = 48; //change this to change the length of a row of number of squares displayed in the mosaic
 	vMosaicY = vMosaicX * 0.75;
 	pixelDensity(1);
 	video = createCapture(VIDEO);
@@ -22,7 +22,7 @@ function setup() {
 	console.log("vW/2= " + vW / 2);
 
 	video.hide();
-
+	noSmooth();
 }
 
 function draw() {
@@ -36,7 +36,7 @@ function draw() {
 	strokeWeight(1);
 
 	video.loadPixels();
-noStroke();
+	noStroke();
 	fill(240, 240, 220);
 	rect(0 - vScale * 2, 0 - vScale * 2, vW * .75 + (vScale * 4), vW * .75 + (vScale * 4));
 
